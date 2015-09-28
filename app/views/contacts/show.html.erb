@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <% if @contact.image_file_name != nil %>
+    <div class="col-md-2">
+      <h2>
+        <%= image_tag @contact.image.url(:thumb) %>
+      </h2>
+    </div>
+  <% end %>
+  <div class="col-md-10">
+    <h2>
+      <%= @contact.first_name %> <%= @contact.last_name %>
+    </h2>
+
+    <% if @contact.business_name != nil %>
+      <h4>
+        <%= @contact.business_name %>
+      </h4>
+    <% end %>
+
+    <p>
+      <%= @contact.email %>
+    </p>
+  </div>
+</div>
+
+<div id="contact-map"></div>
+
+<p>
+  <strong>Phone1:</strong>
+  <%= @contact.phone1 %>
+</p>
+
+<p>
+  <strong>Phone2:</strong>
+  <%= @contact.phone2 %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_contact_path(@contact), class: "btn btn-warning" %> 
+<%= link_to 'Full Contact List', contacts_path, class: "btn btn-info" %> 
+<%= link_to 'Home Page', root_path, class: "btn btn-primary" %>
+
+<%= javascript_tag do %>
+   latitude = '<%= j @contact.latitude.to_s %>';
+   longitude = '<%= j @contact.longitude.to_s %>';
+   address = '<%= j @contact.full_address %>';
+   name = '<%= j "#{@contact.first_name} #{@contact.last_name}" %>';
+<% end %>
