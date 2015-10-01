@@ -18,6 +18,27 @@
 @import "bootstrap";
 @import "font-awesome";
 
+html, body {
+	height: 100%
+}
+
+body {
+	background: url(<%= asset_path 'color-bg.jpeg' %>) center center fixed no-repeat;
+	background-size: cover;
+}
+
+header, footer {
+ 	height: 15%;
+ }
+
+.container {
+	background: white;
+	height: 70%;
+	overflow: auto;
+	padding: 10px;
+	border-radius: 10px;
+}
+
 #contact-map {
 	width: 100%;
   height: 500px;
@@ -30,4 +51,8 @@
 
 .mtop-20 {
 	margin-top: 20px;
+}
+
+.red-text {
+	color: red;
 }

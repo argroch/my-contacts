@@ -1,0 +1,39 @@
+<!-- We only come to this page if there are multiple people with the same last name (or other search criteria) -->
+<p>
+	There are several contacts by that last name...
+</p>
+
+<!-- A table for now...but we should change this to a grid of wells -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Business Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Phone1</th>
+      <th>Phone2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.first_name %> <%= contact.last_name %></td>
+        <td><%= contact.business_name %></td>
+        <td><%= contact.address %></td>
+        <td><%= contact.city %></td>
+        <td><%= contact.state %></td>
+        <td><%= contact.zip %></td>
+        <td><%= contact.phone1 %></td>
+        <td><%= contact.phone2 %></td>
+        <td><%= link_to 'Show', contact %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -6,12 +6,34 @@
 
 <div class="row center-it">
 	<div class="col-md-8 col-md-offset-2">
+		<!-- If no match was found for their search,
+			we let them know and let them try again
+		-->
+		<% if @contact_found == false %>
+			<h4 class="red-text">No Contact Found by That Name</h4>
+			<h5 class="red-text">Please try again</h5>
+		<% end %>
 		<h3>Look Up Your Contacts</h3>
 
-		<div>
+		<!-- Form to search by Full Name -->
+		<div id="by_full_name_form">
 			<%= form_tag(contact_search_path) do %>
-				<%= text_field_tag :name, nil, placeholder: "Contact Name" %><br />
-				<%= submit_tag "Search by Name", class: "btn btn-info" %>
+				<div class="form-group">
+					<%= text_field_tag :name, nil, placeholder: "Type in Full Name & Press Enter", class: "form-control" %>
+					<%= hidden_field_tag :search_type, "FNS" %>
+					<!-- FNS = "Full Name Search" -->
+				</div>
+			<% end %>
+		</div>
+
+		<!-- Form to search by Last Name -->
+		<div id="by_last_name_form">
+			<%= form_tag(contact_search_path) do %>
+				<div class="form-group">
+					<%= text_field_tag :l_name, nil, placeholder: "or, Type in Last Name & Press Enter", class: "form-control" %>
+					<%= hidden_field_tag :search_type, "LNS" %>
+					<!-- LNS = "Last Name Search" -->
+				</div>
 			<% end %>
 		</div>
 

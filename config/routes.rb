@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
-  post 'contact_search' => 'home#index'
+  root 'home#index' #our homepage is where we search or click to create new
+
+  #we will only come to the "contact_search" page via a form submission, so it must be a POST route
+  post 'contact_search' => 'home#contact_search'
   
   devise_for :users
   resources :contacts
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

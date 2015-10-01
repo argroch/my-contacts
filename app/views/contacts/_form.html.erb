@@ -30,7 +30,8 @@
     <%= f.text_field :city, placeholder: "City", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.text_field :state, placeholder: "State", class: "form-control" %>
+    <!-- Users can choose from dropdown of states -->
+    <%= f.select(:state, @states.collect { |s| [ s ] }, {:include_blank => 'Select State/Territory'}) %>
   </div>
   <div class="form-group">
     <%= f.text_field :zip, placeholder: "Zip Code", class: "form-control" %>
